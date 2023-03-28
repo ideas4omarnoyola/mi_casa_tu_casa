@@ -22,10 +22,7 @@
 </head>
 <body class="pagina">
 
-    <img class="elementos infos" id="info1" src="../img/pagina49/info1.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos infos" id="info2" src="../img/pagina49/info2.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos infos" id="info3" src="../img/pagina49/info3.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos infos" id="info4" src="../img/pagina49/info4.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos infos" id="texto" src="../img/pagina49/texto.png" data-posX="0" data-posY="0" alt="">
 
 
     <!-- Script de la página -->
@@ -33,10 +30,7 @@
 
         // Variable----------------------------------------------------
         let aplicacion = parent;
-        const info1 = $('#info1');
-        const info2 = $('#info2');
-        const info3 = $('#info3');
-        const info4 = $('#info4');
+        const texto = $('#texto');
         
 
         // Audios------------------------------------------------------
@@ -52,10 +46,7 @@
 
         function iniciarContenido(){
             aplicacion.reproducirAudio(audio[0], final, 1);
-            animacionEntrada(info1, 'default', 1, 1);
-            animacionEntrada(info2, 'default', 1, 11);
-            animacionEntrada(info3, 'default', 1, 15);
-            animacionEntrada(info4, 'default', 1, 21);
+            animacionEntrada(texto, 'default', 1, 1);
         }
 
         function final() {

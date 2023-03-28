@@ -28,6 +28,7 @@
     <img class="elementos infos" id="info3" src="../img/pagina39/info3.png" data-posX="0" data-posY="0" alt="">
     <img class="elementos infos" id="info4" src="../img/pagina39/info4.png" data-posX="0" data-posY="0" alt="">
     <img class="elementos infos" id="info5" src="../img/pagina39/info5.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos infos" id="info6" src="../img/pagina39/info6.png" data-posX="0" data-posY="0" alt="">
 
 
     <!-- Script de la página -->
@@ -42,6 +43,7 @@
         const info3 = $('#info3');
         const info4 = $('#info4');
         const info5 = $('#info5');
+        const info6 = $('#info6');
         
 
         // Audios------------------------------------------------------
@@ -58,11 +60,12 @@
         function iniciarContenido(){
             aplicacion.reproducirAudio(audio[0], final, 1);
             animacionEntrada(texto, 'default', 1, 1);
-            animacionEntrada(info1, 'default', 1, 4);
+            animacionEntrada(info1, 'default', 1, 6);
             animacionEntrada(info2, 'default', 1, 9);
             animacionEntrada(info3, 'default', 1, 13);
-            animacionEntrada(info4, 'default', 1, 21);
-            animacionEntrada(info5, 'default', 1, 29);
+            animacionEntrada(info4, 'default', 1, 25);
+            animacionEntrada(info5, 'default', 1, 30);
+            animacionEntrada(info6, 'default', 1, 33);
         }
 
         function final() {

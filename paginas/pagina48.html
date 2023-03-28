@@ -24,6 +24,8 @@
 
     <img class="elementos infos" id="info1" src="../img/pagina48/info1.png" data-posX="0" data-posY="0" alt="">
     <img class="elementos infos" id="info2" src="../img/pagina48/info2.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos infos" id="info3" src="../img/pagina48/info3.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos infos" id="info4" src="../img/pagina48/info4.png" data-posX="0" data-posY="0" alt="">
 
 
     <!-- Script de la página -->
@@ -31,19 +33,15 @@
 
         // Variable----------------------------------------------------
         let aplicacion = parent;
-
         const info1 = $('#info1');
         const info2 = $('#info2');
-
-        const informacion = [info1, info2];
-
-        let indexInfo = 0;
+        const info3 = $('#info3');
+        const info4 = $('#info4');
         
 
         // Audios------------------------------------------------------
         const audio = [
-            new Audio('../audios/SODIMAC_MICASA_48_1.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_48_2.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_48_1.mp3')
         ]
 
         // Al cargarse la página
@@ -53,26 +51,15 @@
         });
 
         function iniciarContenido(){
-            reglas();
+            aplicacion.reproducirAudio(audio[0], final, 1);
+            animacionEntrada(info1, 'default', 1, 1);
+            animacionEntrada(info2, 'default', 1, 10);
+            animacionEntrada(info3, 'default', 1, 14);
+            animacionEntrada(info4, 'default', 1, 19);
         }
 
-        function reglas(){
-            narrarReglas();
-        }
-
-        function narrarReglas(){
-            aplicacion.reproducirAudio(audio[indexInfo], siguiente, 1);
-            animacionEntrada(informacion[indexInfo], 'default', 1);
-        }
-
-        function siguiente(){
-            indexInfo++;
-            if(indexInfo < informacion.length){
-                reglas();
-            }
-            else{
-                aplicacion.terminaPantalla();
-            }
+        function final() {
+            aplicacion.terminaPantalla();
         }
 
     </script>
