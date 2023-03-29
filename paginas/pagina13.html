@@ -21,21 +21,61 @@
 
 </head>
 <body class="pagina">
-
     <img class="elementos" id="texto" src="../img/pagina13/texto.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="instrucciones" src="../img/pagina13/instrucciones.png" data-posX="0" data-posY="0" alt="">
+
+    <img class="elementos" id="info1" src="../img/pagina13/info1.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="info2" src="../img/pagina13/info2.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="info3" src="../img/pagina13/info3.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="info4" src="../img/pagina13/info4.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="info5" src="../img/pagina13/info5.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="info6" src="../img/pagina13/info6.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="info7" src="../img/pagina13/info7.png" data-posX="0" data-posY="0" alt="">
     
+    <img class="elementos botones" id="boton1" src="../img/pagina13/boton1.png" data-posX="179" data-posY="337" alt="">
+    <img class="elementos botones" id="boton2" src="../img/pagina13/boton2.png" data-posX="273" data-posY="237" alt="">
+    <img class="elementos botones" id="boton3" src="../img/pagina13/boton3.png" data-posX="392" data-posY="172" alt="">
+    <img class="elementos botones" id="boton4" src="../img/pagina13/boton4.png" data-posX="507" data-posY="109" alt="">
+    <img class="elementos botones" id="boton5" src="../img/pagina13/boton5.png" data-posX="622" data-posY="109" alt="">
+    <img class="elementos botones" id="boton6" src="../img/pagina13/boton6.png" data-posX="739" data-posY="172" alt="">
+    <img class="elementos botones" id="boton7" src="../img/pagina13/boton7.png" data-posX="858" data-posY="186" alt="">
+
+
     <!-- Script de la página -->
     <script>
 
         // Variable----------------------------------------------------
         let aplicacion = parent;
-        const texto = $('#texto');
 
-        let indexDialogos = 0;
+        const texto = $('#texto');
+        const instrucciones = $('#instrucciones');
+        const boton1 = $('#boton1');
+        const boton2 = $('#boton2');
+        const boton3 = $('#boton3');
+        const boton4 = $('#boton4');
+        const boton5 = $('#boton5');
+        const boton6 = $('#boton6');
+        const boton7 = $('#boton7');
+        const info1 = $('#info1');
+        const info2 = $('#info2');
+        const info3 = $('#info3');
+        const info4 = $('#info4');
+        const info5 = $('#info5');
+        const info6 = $('#info6');
+        const info7 = $('#info7');
+
+        const botones = $('.botones');
+
+        const informacion = [info1, info2, info3, info4, info5, info6, info7];
+        const btns = [boton1, boton2, boton3, boton4, boton5, boton6, boton7];
+
+        let indexInfo = 0;
+        
 
         // Audios------------------------------------------------------
         const audio = [
-            new Audio('../audios/SODIMAC_MICASA_13_01.mp3')
+            new Audio('../audios/SODIMAC_MICASA_13_01.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_13_02.mp3'),
         ]
 
         // Al cargarse la página
@@ -45,12 +85,42 @@
         });
 
         function iniciarContenido(){
-            aplicacion.reproducirAudio(audio[0], finalPagina, 1);
-            animacionEntrada(texto, 'default', 1);
+            aplicacion.reproducirAudio(audio[0], dialogo, 1);
+            animacionEntrada(texto, 'default', 1, 1);
+            animacionEntrada(botones, 'default', 1, 1);
         }
 
-        function finalPagina() {  
-            aplicacion.terminaPantalla();
+        function dialogo(){
+            aplicacion.reproducirAudio(audio[1], botonera, 1);
+            animacionEntrada(instrucciones, 'default', 1, 1);
+        }
+
+        function botonera(){
+            parpadear(btns[indexInfo]);
+        }
+
+        botones.each(function(){
+            $(this).click(function () {  
+                if($(this).css('cursor') == 'pointer'){
+                    // aplicacion.reproducirAudio(audioBotones[indexInfo], siguiente, 1);
+                    animacionEntrada(informacion[indexInfo], 'default', 1);
+                    dejarParpadear($(this));
+                    
+                    setTimeout(()=>{
+                        siguiente();
+                    }, 2000);
+                }
+            });
+        });
+
+        function siguiente(){
+            indexInfo++;
+            if(indexInfo < informacion.length){
+                botonera();
+            }
+            else{
+                aplicacion.terminaPantalla();
+            }
         }
 
     </script>

@@ -45,13 +45,13 @@
     <img class="elementos" id="pop9" src="../img/pagina08/pop9.png" data-posX="0" data-posY="0" alt="">
 
     <img class="elementos botonCerrar" id="cerrar1" src="../img/pagina08/cerrar.png" data-posX="397" data-posY="165" alt="">
-    <img class="elementos botonCerrar" id="cerrar2" src="../img/pagina08/cerrar.png" data-posX="431" data-posY="417" alt="">
+    <img class="elementos botonCerrar" id="cerrar2" src="../img/pagina08/cerrar.png" data-posX="390" data-posY="417" alt="">
     <img class="elementos botonCerrar" id="cerrar3" src="../img/pagina08/cerrar.png" data-posX="419" data-posY="359" alt="">
-    <img class="elementos botonCerrar" id="cerrar4" src="../img/pagina08/cerrar.png" data-posX="584" data-posY="204" alt="">
-    <img class="elementos botonCerrar" id="cerrar5" src="../img/pagina08/cerrar.png" data-posX="761" data-posY="249" alt="">
+    <img class="elementos botonCerrar" id="cerrar4" src="../img/pagina08/cerrar.png" data-posX="543" data-posY="204" alt="">
+    <img class="elementos botonCerrar" id="cerrar5" src="../img/pagina08/cerrar.png" data-posX="707" data-posY="249" alt="">
     <img class="elementos botonCerrar" id="cerrar6" src="../img/pagina08/cerrar.png" data-posX="798" data-posY="197" alt="">
     <img class="elementos botonCerrar" id="cerrar7" src="../img/pagina08/cerrar.png" data-posX="977" data-posY="163" alt="">
-    <img class="elementos botonCerrar" id="cerrar8" src="../img/pagina08/cerrar.png" data-posX="979" data-posY="412" alt="">
+    <img class="elementos botonCerrar" id="cerrar8" src="../img/pagina08/cerrar.png" data-posX="976" data-posY="426" alt="">
     <img class="elementos botonCerrar" id="cerrar9" src="../img/pagina08/cerrar.png" data-posX="950" data-posY="358" alt="">
 
 
@@ -100,12 +100,10 @@
         let indexPop = 0;
 
         // Audios------------------------------------------------------
-        const audio = [
-            new Audio('../audios/SODIMAC_MICASA_08_01.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_08_02.mp3')
-        ]
 
         const audioPop = [
+            new Audio('../audios/SODIMAC_MICASA_08_01.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_08_02.mp3'),
             new Audio('../audios/SODIMAC_MICASA_08_03.mp3'),
             new Audio('../audios/SODIMAC_MICASA_08_04.mp3'),
             new Audio('../audios/SODIMAC_MICASA_08_05.mp3'),
@@ -113,8 +111,6 @@
             new Audio('../audios/SODIMAC_MICASA_08_07.mp3'),
             new Audio('../audios/SODIMAC_MICASA_08_08.mp3'),
             new Audio('../audios/SODIMAC_MICASA_08_09.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_08_10.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_08_11.mp3'),
         ]
 
         // Al cargarse la página
@@ -124,14 +120,12 @@
         });
 
         function iniciarContenido(){
-            aplicacion.reproducirAudio(audio[0], dialogo, 1);
             animacionEntrada(fondo, 'default', 1, 1);
-            animacionEntrada(botones, 'default', 1, 1);
-        }
-
-        function dialogo(){
-            aplicacion.reproducirAudio(audio[1], botonera, 1);
             animacionEntrada(instrucciones, 'default', 1, 1);
+            animacionEntrada(botones, 'default', 1, 1);
+            setTimeout(()=>{
+                botonera();
+            }, 2000);
         }
 
         function botonera(){

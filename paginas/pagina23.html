@@ -24,14 +24,20 @@
     <img class="elementos" id="texto" src="../img/pagina23/texto.png" data-posX="0" data-posY="0" alt="">
     <img class="elementos" id="instrucciones" src="../img/pagina23/instrucciones.png" data-posX="0" data-posY="0" alt="">
     
-    <img class="elementos botones" id="boton1" src="../img/pagina23/boton1.png" data-posX="607" data-posY="195" alt="">
+    <img class="elementos botones" id="boton1" src="../img/pagina23/boton1.png" data-posX="486" data-posY="295" alt="">
     <img class="elementos infos" id="info1" src="../img/pagina23/info1.png" data-posX="0" data-posY="0" alt="">
 
-    <img class="elementos botones" id="boton2" src="../img/pagina23/boton2.png" data-posX="572" data-posY="267" alt="">
+    <img class="elementos botones" id="boton2" src="../img/pagina23/boton2.png" data-posX="483" data-posY="499" alt="">
     <img class="elementos infos" id="info2" src="../img/pagina23/info2.png" data-posX="0" data-posY="0" alt="">
 
-    <img class="elementos botones" id="boton3" src="../img/pagina23/boton3.png" data-posX="528" data-posY="499" alt="">
+    <img class="elementos botones" id="boton3" src="../img/pagina23/boton3.png" data-posX="643" data-posY="318" alt="">
     <img class="elementos infos" id="info3" src="../img/pagina23/info3.png" data-posX="0" data-posY="0" alt="">
+
+    <img class="elementos botones" id="boton4" src="../img/pagina23/boton4.png" data-posX="673" data-posY="274" alt="">
+    <img class="elementos infos" id="info4" src="../img/pagina23/info4.png" data-posX="0" data-posY="0" alt="">
+
+    <img class="elementos botones" id="boton5" src="../img/pagina23/boton5.png" data-posX="646" data-posY="423" alt="">
+    <img class="elementos infos" id="info5" src="../img/pagina23/info5.png" data-posX="0" data-posY="0" alt="">
 
 
     <!-- Script de la página -->
@@ -45,28 +51,33 @@
         const boton1 = $('#boton1');
         const boton2 = $('#boton2');
         const boton3 = $('#boton3');
+        const boton4 = $('#boton4');
+        const boton5 = $('#boton5');
         const info1 = $('#info1');
         const info2 = $('#info2');
         const info3 = $('#info3');
+        const info4 = $('#info4');
+        const info5 = $('#info5');
 
         const botones = $('.botones');
 
-        const informacion = [info1, info2, info3];
-        const btns = [boton1, boton2, boton3];
+        const informacion = [info1, info2, info3, info4, info5];
+        const btns = [boton1, boton2, boton3, boton4, boton5];
 
         let indexInfo = 0;
         
 
         // Audios------------------------------------------------------
         const audio = [
-            new Audio('../audios/SODIMAC_MICASA_23_01.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_23_02.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_23_01.mp3')
         ]
 
         const audioBotones = [
+            new Audio('../audios/SODIMAC_MICASA_23_02.mp3'),
             new Audio('../audios/SODIMAC_MICASA_23_03.mp3'),
             new Audio('../audios/SODIMAC_MICASA_23_04.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_23_05.mp3')
+            new Audio('../audios/SODIMAC_MICASA_23_05.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_23_06.mp3')
         ]
 
         // Al cargarse la página
@@ -76,12 +87,8 @@
         });
 
         function iniciarContenido(){
-            aplicacion.reproducirAudio(audio[0], locutar, 1);
+            aplicacion.reproducirAudio(audio[0], botonera, 1);
             animacionEntrada(texto, 'default', 1, 1);
-        }
-
-        function locutar(){
-            aplicacion.reproducirAudio(audio[1], botonera, 1);
             animacionEntrada(instrucciones, 'default', 1, 1);
         }
 

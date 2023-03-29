@@ -22,14 +22,7 @@
 </head>
 <body class="pagina">
 
-    
-    <img class="elementos" id="texto" src="../img/pagina11/texto.png" data-posX="0" data-posY="0"/>
-    <img class="elementos" id="play" src="../img/pagina11/play.png" data-posX="363" data-posY="254"/>
-
-    <video class="elementos" id="video1" data-posX="0" data-posY="90"  autobuffer controls controlsList="nodownload nofullscreen">
-        <source src="../videos/41VideoAperturatienda1Izcalli.mp4" type="video/mp4" />
-    </video>
-
+    <img class="elementos" id="texto" src="../img/pagina11/texto.png" data-posX="0" data-posY="0" alt="">
     
     <!-- Script de la página -->
     <script>
@@ -37,13 +30,8 @@
         // Variable----------------------------------------------------
         let aplicacion = parent;
         const texto = $('#texto');
-        const play = $('#play');
-        const video1 = $('#video1');
 
-        video1.css({
-            'width': '1020px',
-            'height': '450px'
-        });
+        let indexDialogos = 0;
 
         // Audios------------------------------------------------------
         const audio = [
@@ -57,29 +45,13 @@
         });
 
         function iniciarContenido(){
-            aplicacion.reproducirAudio(audio[0], activarVideo, 2);
-            animacionEntrada(texto, 'default', 1, 1);
+            aplicacion.reproducirAudio(audio[0], finalPagina, 1);
+            animacionEntrada(texto, 'default', 1);
         }
 
-        function activarVideo(){
-            parpadear(play);
+        function finalPagina() {  
+            aplicacion.terminaPantalla();
         }
-
-        play.click(function(){
-            if(play.css('cursor') == 'pointer'){
-                animacionSalida(texto, 'default', 1, 1);
-                animacionEntrada(video1, 'default', 1, 1);
-
-                setTimeout(()=>{
-                    document.getElementById("video1").play();
-                    video1.on("ended", function() {
-                        aplicacion.terminaPantalla();
-                    });
-                }, 1000);
-            }
-        });
-
-        
 
     </script>
 </body>

@@ -22,8 +22,7 @@
 </head>
 <body class="pagina">
 
-    <img class="elementos infos" id="info1" src="../img/pagina47/info1.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos infos" id="info2" src="../img/pagina47/info2.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos infos" id="texto" src="../img/pagina47/texto.png" data-posX="0" data-posY="0" alt="">
 
 
     <!-- Script de la página -->
@@ -31,19 +30,12 @@
 
         // Variable----------------------------------------------------
         let aplicacion = parent;
-
-        const info1 = $('#info1');
-        const info2 = $('#info2');
-
-        const informacion = [info1, info2];
-
-        let indexInfo = 0;
+        const texto = $('#texto');
         
 
         // Audios------------------------------------------------------
         const audio = [
-            new Audio('../audios/SODIMAC_MICASA_47_1.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_47_2.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_47_1.mp3')
         ]
 
         // Al cargarse la página
@@ -53,26 +45,12 @@
         });
 
         function iniciarContenido(){
-            reglas();
+            aplicacion.reproducirAudio(audio[0], final, 1);
+            animacionEntrada(texto, 'default', 1, 1);
         }
 
-        function reglas(){
-            narrarReglas();
-        }
-
-        function narrarReglas(){
-            aplicacion.reproducirAudio(audio[indexInfo], siguiente, 1);
-            animacionEntrada(informacion[indexInfo], 'default', 1);
-        }
-
-        function siguiente(){
-            indexInfo++;
-            if(indexInfo < informacion.length){
-                reglas();
-            }
-            else{
-                aplicacion.terminaPantalla();
-            }
+        function final() {
+            aplicacion.terminaPantalla();
         }
 
     </script>

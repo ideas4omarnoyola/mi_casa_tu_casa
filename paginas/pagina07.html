@@ -21,29 +21,100 @@
 
 </head>
 <body class="pagina">
-
     <img class="elementos" id="fondo" src="../img/pagina07/fondo.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="instrucciones" src="../img/pagina07/instrucciones.png" data-posX="0" data-posY="0" alt="">
 
-    <img class="elementos" id="d1" src="../img/pagina07/d1.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="d2" src="../img/pagina07/d2.png" data-posX="0" data-posY="0" alt="">
-    
+    <img class="elementos botones" id="boton1" src="../img/pagina07/casa.png" data-posX="219" data-posY="95" alt="">
+    <img class="elementos botones" id="boton2" src="../img/pagina07/casa.png" data-posX="144" data-posY="329" alt="">
+    <img class="elementos botones" id="boton3" src="../img/pagina07/casa.png" data-posX="144" data-posY="474" alt="">
+    <img class="elementos botones" id="boton4" src="../img/pagina07/casa.png" data-posX="336" data-posY="331" alt="">
+    <img class="elementos botones" id="boton5" src="../img/pagina07/casa.png" data-posX="516" data-posY="372" alt="">
+    <img class="elementos botones" id="boton6" src="../img/pagina07/casa.png" data-posX="740" data-posY="331" alt="">
+    <img class="elementos botones" id="boton7" src="../img/pagina07/casa.png" data-posX="855" data-posY="95" alt="">
+    <img class="elementos botones" id="boton8" src="../img/pagina07/casa.png" data-posX="923" data-posY="329" alt="">
+    <img class="elementos botones" id="boton9" src="../img/pagina07/casa.png" data-posX="923" data-posY="474" alt="">
+
+    <img class="elementos" id="pop1" src="../img/pagina07/pop1.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="pop2" src="../img/pagina07/pop2.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="pop3" src="../img/pagina07/pop3.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="pop4" src="../img/pagina07/pop4.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="pop5" src="../img/pagina07/pop5.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="pop6" src="../img/pagina07/pop6.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="pop7" src="../img/pagina07/pop7.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="pop8" src="../img/pagina07/pop8.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos" id="pop9" src="../img/pagina07/pop9.png" data-posX="0" data-posY="0" alt="">
+
+    <img class="elementos botonCerrar" id="cerrar1" src="../img/pagina07/cerrar.png" data-posX="397" data-posY="165" alt="">
+    <img class="elementos botonCerrar" id="cerrar2" src="../img/pagina07/cerrar.png" data-posX="431" data-posY="417" alt="">
+    <img class="elementos botonCerrar" id="cerrar3" src="../img/pagina07/cerrar.png" data-posX="419" data-posY="359" alt="">
+    <img class="elementos botonCerrar" id="cerrar4" src="../img/pagina07/cerrar.png" data-posX="584" data-posY="204" alt="">
+    <img class="elementos botonCerrar" id="cerrar5" src="../img/pagina07/cerrar.png" data-posX="761" data-posY="249" alt="">
+    <img class="elementos botonCerrar" id="cerrar6" src="../img/pagina07/cerrar.png" data-posX="798" data-posY="197" alt="">
+    <img class="elementos botonCerrar" id="cerrar7" src="../img/pagina07/cerrar.png" data-posX="977" data-posY="163" alt="">
+    <img class="elementos botonCerrar" id="cerrar8" src="../img/pagina07/cerrar.png" data-posX="979" data-posY="412" alt="">
+    <img class="elementos botonCerrar" id="cerrar9" src="../img/pagina07/cerrar.png" data-posX="950" data-posY="358" alt="">
+
+
     <!-- Script de la página -->
     <script>
 
         // Variable----------------------------------------------------
         let aplicacion = parent;
+
         const fondo = $('#fondo');
-        const d1 = $('#d1');
-        const d2 = $('#d2');
+        const instrucciones = $('#instrucciones');
+        const boton1 = $('#boton1');
+        const boton2 = $('#boton2');
+        const boton3 = $('#boton3');
+        const boton4 = $('#boton4');
+        const boton5 = $('#boton5');
+        const boton6 = $('#boton6');
+        const boton7 = $('#boton7');
+        const boton8 = $('#boton8');
+        const boton9 = $('#boton9');
+        const pop1 = $('#pop1');
+        const pop2 = $('#pop2');
+        const pop3 = $('#pop3');
+        const pop4 = $('#pop4');
+        const pop5 = $('#pop5');
+        const pop6 = $('#pop6');
+        const pop7 = $('#pop7');
+        const pop8 = $('#pop8');
+        const pop9 = $('#pop9');
+        const cerrar1 = $('#cerrar1');
+        const cerrar2 = $('#cerrar2');
+        const cerrar3 = $('#cerrar3');
+        const cerrar4 = $('#cerrar4');
+        const cerrar5 = $('#cerrar5');
+        const cerrar6 = $('#cerrar6');
+        const cerrar7 = $('#cerrar7');
+        const cerrar8 = $('#cerrar8');
+        const cerrar9 = $('#cerrar9');
+        const botones = $('.botones');
+        const botonCerrar = $('.botonCerrar');
 
-        const dialogos = [d1, d2];
+        const pops = [pop1, pop2, pop3, pop4, pop5, pop6, pop7, pop8, pop9];
+        const cerrar = [cerrar1, cerrar2, cerrar3, cerrar4, cerrar5, cerrar6, cerrar7, cerrar8, cerrar9];
+        const botonActivo = [boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, boton9];
 
-        let indexDialogos = 0;
+        let indexPop = 0;
 
         // Audios------------------------------------------------------
         const audio = [
             new Audio('../audios/SODIMAC_MICASA_07_01.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_07_02.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_07_02.mp3')
+        ]
+
+        const audioPop = [
+            new Audio('../audios/SODIMAC_MICASA_07_03.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_07_04.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_07_05.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_07_06.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_07_07.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_07_08.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_07_09.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_07_10.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_07_11.mp3'),
         ]
 
         // Al cargarse la página
@@ -53,20 +124,51 @@
         });
 
         function iniciarContenido(){
-            narrarDialogos();
-            animacionEntrada(fondo, 'default', 1);
+            aplicacion.reproducirAudio(audio[0], dialogo, 1);
+            animacionEntrada(fondo, 'default', 1, 1);
+            animacionEntrada(botones, 'default', 1, 1);
         }
 
-        function narrarDialogos(){
-            aplicacion.reproducirAudio(audio[indexDialogos], siguiente, 1);
-            animacionEntrada(dialogos[indexDialogos], 'default', 1);
+        function dialogo(){
+            aplicacion.reproducirAudio(audio[1], botonera, 1);
+            animacionEntrada(instrucciones, 'default', 1, 1);
         }
 
-        function siguiente(){
-            indexDialogos++;
-            if(indexDialogos < dialogos.length){
-                animacionSalida(dialogos[indexDialogos - 1], 'default', 1);
-                narrarDialogos();
+        function botonera(){
+            parpadear(botonActivo[indexPop]);
+        }
+
+        botones.each(function(){
+            $(this).click(function(){
+                if($(this).css('cursor') == 'pointer'){
+                    aplicacion.reproducirAudio(audioPop[indexPop], cerrarPop, 1);
+                    animacionEntrada(pops[indexPop], 'default', 1, 1);
+                    dejarParpadear($(this));
+                }
+            });
+        });
+
+        function cerrarPop(){  
+            parpadear(cerrar[indexPop]);
+        }
+
+        botonCerrar.each(function(){
+            $(this).click(function(){
+                if($(this).css('cursor') == 'pointer'){
+                    dejarParpadear($(this));                    
+                    animacionSalida(pops[indexPop], 'default', 1, 1);
+                    animacionSalida(cerrar[indexPop], 'default', 1, 1);
+                    siguiente();
+                }
+            });
+        });
+
+        function siguiente() {  
+            
+            indexPop++;
+
+            if(indexPop < pops.length){
+                botonera();
             }
             else{
                 aplicacion.terminaPantalla();

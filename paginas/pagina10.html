@@ -21,68 +21,33 @@
 
 </head>
 <body class="pagina">
-    <img class="elementos" id="fondo" src="../img/pagina10/fondo.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="instrucciones" src="../img/pagina10/instrucciones.png" data-posX="0" data-posY="0" alt="">
 
-    <img class="elementos botones" id="boton1" src="../img/pagina10/casa.png" data-posX="144" data-posY="329" alt="">
-    <img class="elementos botones" id="boton2" src="../img/pagina10/casa.png" data-posX="336" data-posY="331" alt="">
-    <img class="elementos botones" id="boton3" src="../img/pagina10/casa.png" data-posX="516" data-posY="372" alt="">
-    <img class="elementos botones" id="boton4" src="../img/pagina10/casa.png" data-posX="740" data-posY="331" alt="">
-    <img class="elementos botones" id="boton5" src="../img/pagina10/casa.png" data-posX="928" data-posY="322" alt="">
+    
+    <img class="elementos" id="texto" src="../img/pagina10/texto.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="play" src="../img/pagina10/play.png" data-posX="363" data-posY="254"/>
 
-    <img class="elementos" id="pop1" src="../img/pagina10/pop1.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="pop2" src="../img/pagina10/pop2.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="pop3" src="../img/pagina10/pop3.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="pop4" src="../img/pagina10/pop4.png" data-posX="0" data-posY="0" alt="">
-    <img class="elementos" id="pop5" src="../img/pagina10/pop5.png" data-posX="0" data-posY="0" alt="">
+    <video class="elementos" id="video1" data-posX="0" data-posY="90"  autobuffer controls controlsList="nodownload nofullscreen">
+        <source src="../videos/41VideoAperturatienda1Izcalli.mp4" type="video/mp4" />
+    </video>
 
-    <img class="elementos botonCerrar" id="cerrar1" src="../img/pagina10/cerrar.png" data-posX="319" data-posY="204" alt="">
-    <img class="elementos botonCerrar" id="cerrar2" src="../img/pagina10/cerrar.png" data-posX="546" data-posY="161" alt="">
-    <img class="elementos botonCerrar" id="cerrar3" src="../img/pagina10/cerrar.png" data-posX="563" data-posY="434" alt="">
-    <img class="elementos botonCerrar" id="cerrar4" src="../img/pagina10/cerrar.png" data-posX="898" data-posY="194" alt="">
-    <img class="elementos botonCerrar" id="cerrar5" src="../img/pagina10/cerrar.png" data-posX="908" data-posY="226" alt="">
-
-
+    
     <!-- Script de la página -->
     <script>
 
         // Variable----------------------------------------------------
         let aplicacion = parent;
+        const texto = $('#texto');
+        const play = $('#play');
+        const video1 = $('#video1');
 
-        const fondo = $('#fondo');
-        const instrucciones = $('#instrucciones');
-        const boton1 = $('#boton1');
-        const boton2 = $('#boton2');
-        const boton3 = $('#boton3');
-        const boton4 = $('#boton4');
-        const boton5 = $('#boton5');
-        const pop1 = $('#pop1');
-        const pop2 = $('#pop2');
-        const pop3 = $('#pop3');
-        const pop4 = $('#pop4');
-        const pop5 = $('#pop5');
-        const cerrar1 = $('#cerrar1');
-        const cerrar2 = $('#cerrar2');
-        const cerrar3 = $('#cerrar3');
-        const cerrar4 = $('#cerrar4');
-        const cerrar5 = $('#cerrar5');
-        const botones = $('.botones');
-        const botonCerrar = $('.botonCerrar');
-
-        const pops = [pop1, pop2, pop3, pop4, pop5];
-        const cerrar = [cerrar1, cerrar2, cerrar3, cerrar4, cerrar5];
-        const botonActivo = [boton1, boton2, boton3, boton4, boton5];
-
-        let indexPop = 0;
+        video1.css({
+            'width': '1020px',
+            'height': '450px'
+        });
 
         // Audios------------------------------------------------------
-
-        const audioPop = [
-            new Audio('../audios/SODIMAC_MICASA_10_01.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_10_02.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_10_03.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_10_04.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_10_05.mp3'),
+        const audio = [
+            new Audio('../audios/SODIMAC_MICASA_10_01.mp3')
         ]
 
         // Al cargarse la página
@@ -92,54 +57,29 @@
         });
 
         function iniciarContenido(){
-            animacionEntrada(fondo, 'default', 1, 1);
-            animacionEntrada(instrucciones, 'default', 1, 1);
-            animacionEntrada(botones, 'default', 1, 1);
-            setTimeout(()=>{
-                botonera();
-            }, 2000);
+            aplicacion.reproducirAudio(audio[0], activarVideo, 2);
+            animacionEntrada(texto, 'default', 1, 1);
         }
 
-        function botonera(){
-            parpadear(botonActivo[indexPop]);
+        function activarVideo(){
+            parpadear(play);
         }
 
-        botones.each(function(){
-            $(this).click(function(){
-                if($(this).css('cursor') == 'pointer'){
-                    aplicacion.reproducirAudio(audioPop[indexPop], cerrarPop, 1);
-                    animacionEntrada(pops[indexPop], 'default', 1, 1);
-                    dejarParpadear($(this));
-                }
-            });
+        play.click(function(){
+            if(play.css('cursor') == 'pointer'){
+                animacionSalida(texto, 'default', 1, 1);
+                animacionEntrada(video1, 'default', 1, 1);
+
+                setTimeout(()=>{
+                    document.getElementById("video1").play();
+                    video1.on("ended", function() {
+                        aplicacion.terminaPantalla();
+                    });
+                }, 1000);
+            }
         });
 
-        function cerrarPop(){  
-            parpadear(cerrar[indexPop]);
-        }
-
-        botonCerrar.each(function(){
-            $(this).click(function(){
-                if($(this).css('cursor') == 'pointer'){
-                    dejarParpadear($(this));                    
-                    animacionSalida(pops[indexPop], 'default', 1, 1);
-                    animacionSalida(cerrar[indexPop], 'default', 1, 1);
-                    siguiente();
-                }
-            });
-        });
-
-        function siguiente() {  
-            
-            indexPop++;
-
-            if(indexPop < pops.length){
-                botonera();
-            }
-            else{
-                aplicacion.terminaPantalla();
-            }
-        }
+        
 
     </script>
 </body>

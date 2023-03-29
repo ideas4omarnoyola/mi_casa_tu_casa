@@ -34,6 +34,8 @@
     <img class="elementos infos" id="info9" src="../img/pagina33/info9.png" data-posX="0" data-posY="0" alt="">
     <img class="elementos infos" id="info10" src="../img/pagina33/info10.png" data-posX="0" data-posY="0" alt="">
     <img class="elementos infos" id="info11" src="../img/pagina33/info11.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos infos" id="info12" src="../img/pagina33/info12.png" data-posX="0" data-posY="0" alt="">
+    <img class="elementos infos" id="info13" src="../img/pagina33/info13.png" data-posX="0" data-posY="0" alt="">
 
 
     <!-- Script de la página -->
@@ -43,7 +45,6 @@
         let aplicacion = parent;
 
         const texto = $('#texto');
-        const d1 = $('#d1');
         const info1 = $('#info1');
         const info2 = $('#info2');
         const info3 = $('#info3');
@@ -55,29 +56,13 @@
         const info9 = $('#info9');
         const info10 = $('#info10');
         const info11 = $('#info11');
-
-        const informacion = [info1, info2, info3, info4, info5, info6, info7, info8, info9, info10, info11];
-
-        let indexInfo = 0;
+        const info12 = $('#info12');
+        const info13 = $('#info13');
         
 
         // Audios------------------------------------------------------
         const audio = [
-            new Audio('../audios/SODIMAC_MICASA_33_01.mp3')
-        ]
-
-        const audioPrestacion = [
-            new Audio('../audios/SODIMAC_MICASA_33_02.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_33_03.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_33_04.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_33_05.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_33_06.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_33_07.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_33_08.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_33_09.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_33_10.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_33_11.mp3'),
-            new Audio('../audios/SODIMAC_MICASA_33_12.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_33_1.mp3')
         ]
 
         // Al cargarse la página
@@ -87,27 +72,25 @@
         });
 
         function iniciarContenido(){
-            aplicacion.reproducirAudio(audio[0], prestacion, 1);
+            aplicacion.reproducirAudio(audio[0], final, 1);
             animacionEntrada(texto, 'default', 1, 1);
+            animacionEntrada(info1, 'default', 1, 4);
+            animacionEntrada(info2, 'default', 1, 12);
+            animacionEntrada(info3, 'default', 1, 15);
+            animacionEntrada(info4, 'default', 1, 19);
+            animacionEntrada(info5, 'default', 1, 22);
+            animacionEntrada(info6, 'default', 1, 24);
+            animacionEntrada(info7, 'default', 1, 26);
+            animacionEntrada(info8, 'default', 1, 29);
+            animacionEntrada(info9, 'default', 1, 31);
+            animacionEntrada(info10, 'default', 1, 33);
+            animacionEntrada(info11, 'default', 1, 37);
+            animacionEntrada(info12, 'default', 1, 39);
+            animacionEntrada(info13, 'default', 1, 41);
         }
 
-        function prestacion(){
-            narrarPrestacion();
-        }
-
-        function narrarPrestacion(){
-            aplicacion.reproducirAudio(audioPrestacion[indexInfo], siguiente, 0);
-            animacionEntrada(informacion[indexInfo], 'default', 1);
-        }
-
-        function siguiente(){
-            indexInfo++;
-            if(indexInfo < informacion.length){
-                prestacion();
-            }
-            else{
-                aplicacion.terminaPantalla();
-            }
+        function final() {
+            aplicacion.terminaPantalla();
         }
 
     </script>

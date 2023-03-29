@@ -21,33 +21,57 @@
 
 </head>
 <body class="pagina">
+    <img class="elementos" id="texto" src="../img/pagina15/texto.png" data-posX="0" data-posY="0" alt="">
 
-    
-    <img class="elementos" id="texto" src="../img/pagina15/texto.png" data-posX="0" data-posY="0"/>
-    <img class="elementos" id="play" src="../img/pagina15/play.png" data-posX="363" data-posY="254"/>
+    <img class="elementos botones" id="boton1" src="../img/pagina15/boton1.png" data-posX="162" data-posY="205" alt="">
+    <img class="elementos infos" id="info1" src="../img/pagina15/info1.png" data-posX="0" data-posY="0" alt="">
 
-    <video class="elementos" id="video1" data-posX="0" data-posY="90"  autobuffer controls controlsList="nodownload nofullscreen">
-        <source src="../videos/5VideoSODIMAC¿Cómoeslatienda.mp4" type="video/mp4" />
-    </video>
+    <img class="elementos botones" id="boton2" src="../img/pagina15/boton2.png" data-posX="681" data-posY="123" alt="">
+    <img class="elementos infos" id="info2" src="../img/pagina15/info2.png" data-posX="0" data-posY="0" alt="">
 
-    
+    <img class="elementos botones" id="boton3" src="../img/pagina15/boton3.png" data-posX="768" data-posY="328" alt="">
+    <img class="elementos infos" id="info3" src="../img/pagina15/info3.png" data-posX="0" data-posY="0" alt="">
+
+
     <!-- Script de la página -->
     <script>
 
         // Variable----------------------------------------------------
         let aplicacion = parent;
-        const texto = $('#texto');
-        const play = $('#play');
-        const video1 = $('#video1');
 
-        video1.css({
-            'width': '1020px',
-            'height': '450px'
-        });
+        const texto = $('#texto');
+        const d1 = $('#d1');
+        const instrucciones = $('#instrucciones');
+
+        const boton1 = $('#boton1');
+        const boton2 = $('#boton2');
+        const boton3 = $('#boton3');
+        const info1 = $('#info1');
+        const info2 = $('#info2');
+        const info3 = $('#info3');
+
+        const botones = $('.botones');
+
+        const informacion = [info1, info2, info3];
+        const btns = [boton1, boton2, boton3];
+
+        let indexInfo = 0;
 
         // Audios------------------------------------------------------
         const audio = [
             new Audio('../audios/SODIMAC_MICASA_15_01.mp3')
+        ]
+
+        const audioBotones = [
+            new Audio('../audios/SODIMAC_MICASA_15_02.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_15_04.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_15_06.mp3')
+        ]
+
+        const audioInfo = [
+            new Audio('../audios/SODIMAC_MICASA_15_03.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_15_05.mp3'),
+            new Audio('../audios/SODIMAC_MICASA_15_07.mp3')
         ]
 
         // Al cargarse la página
@@ -57,29 +81,45 @@
         });
 
         function iniciarContenido(){
-            aplicacion.reproducirAudio(audio[0], activarVideo, 2);
+            aplicacion.reproducirAudio(audio[0], botonera, 1);
             animacionEntrada(texto, 'default', 1, 1);
+            animacionEntrada(boton1, 'default', 1, 1.5);
+            animacionEntrada(boton2, 'default', 1, 2);
+            animacionEntrada(boton3, 'default', 1, 2.5);
         }
-
-        function activarVideo(){
-            parpadear(play);
-        }
-
-        play.click(function(){
-            if(play.css('cursor') == 'pointer'){
-                animacionSalida(texto, 'default', 1, 1);
-                animacionEntrada(video1, 'default', 1, 1);
-
-                setTimeout(()=>{
-                    document.getElementById("video1").play();
-                    video1.on("ended", function() {
-                        aplicacion.terminaPantalla();
-                    });
-                }, 1000);
-            }
-        });
 
         
+        function botonera(){
+            parpadear(btns[indexInfo]);
+        }
+
+        botones.each(function(){
+            $(this).click(function () {  
+                if($(this).css('cursor') == 'pointer'){
+                    aplicacion.reproducirAudio(audioBotones[indexInfo], visualizarInfo, 1);
+                    dejarParpadear($(this));
+
+                    if(indexInfo > 0){
+                        animacionSalida(informacion[indexInfo - 1], 'default', 0);
+                    }
+                }
+            });
+        });
+
+        function visualizarInfo(){
+            aplicacion.reproducirAudio(audioInfo[indexInfo], siguiente, 1);
+            animacionEntrada(informacion[indexInfo], 'default', 1);
+        }
+
+        function siguiente(){
+            indexInfo++;
+            if(indexInfo < informacion.length){
+                botonera();
+            }
+            else{
+                aplicacion.terminaPantalla();
+            }
+        }
 
     </script>
 </body>
